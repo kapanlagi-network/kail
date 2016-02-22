@@ -11,7 +11,7 @@ import template from './template'
 /**
  *
  */
-export const hooks = [
+export const HOOKS = [
   'applypatch-msg',
   'pre-applypatch',
   'post-applypatch',
@@ -84,7 +84,7 @@ export default function installHooks() {
   const gitPath = getGitPath()
   const hooksPath = getHooksPath(gitPath)
 
-  hooks.forEach(hook => {
+  HOOKS.forEach(hook => {
     const hookPath = path.resolve(hooksPath, hook)
 
     backupHook(hookPath, template.message)

@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-# {{message}}
+# {{MESSAGE}}
 
 # Ensure `node` is in PATH
 PATH="$PATH:/usr/local/bin"
@@ -20,9 +20,9 @@ hook=${0##*/}
 # Run JS script
 node -e "
 try {
-  require('{{hookRunner}}')('${hook}', ${args})
+  require('{{HOOK_RUNNER}}')('${hook}', ${args})
 }
 catch (e) {
-  throw new Error('Module \"{{moduleName}}\" not found. Try to run \"npm install {{moduleName}}\".')
+  throw new Error('Module \"{{MODULE_NAME}}\" not found. Try to run \"npm install {{MODULE_NAME}}\".')
 }
 "
