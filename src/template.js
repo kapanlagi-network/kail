@@ -18,10 +18,10 @@ const templatePath = join(__dirname, 'template.raw')
  *
  */
 export function isItself() {
-  const pkgPath = findUp.sync('package.json')
+  const gitPath = findUp.sync('.git')
 
-  if (pkgPath) {
-    return require(pkgPath).name === moduleName
+  if (gitPath) {
+    return gitPath.match(new RegExp(`${moduleName}/.git$`))
   }
 
   return false
