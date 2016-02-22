@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+# {{message}}
+
+# Ensure `node` is in PATH
+PATH="$PATH:/usr/local/bin"
+
+# Create a JS object from bash arguments
+iterator=1
+args="{\"\$0\": \"$0\","
+for arg in "$@"
+do
+  args="$args\"\$$iterator\": \"$arg\","
+  ((iterator++))
+done
+args="$args}"
+
+# Get hook name from filename
+hook=${0##*/}
+
+# Run JS script
+node -e "
+try {
+  require('{{hookRunner}}')('${hook}', ${args})
+}
+catch (e) {
+  throw new Error('Module \"{{moduleName}}\" not found. Try to run \"npm install {{moduleName}}\".')
+}
+"

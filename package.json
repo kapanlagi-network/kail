@@ -1,0 +1,49 @@
+{
+  "name": "kail",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Git hooks runner",
+  "homepage": "https://github.com/kapanlagi-network/kail",
+  "main": "lib/index.js",
+  "keywords": [
+    "kln",
+    "git",
+    "hook",
+    "git-hook"
+  ],
+  "author": "Simon Degraeve <simon.degraeve@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kapanlagi-network/kail.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kapanlagi-network/kail/issues"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "prebuild": "rimraf lib",
+    "build": "babel --copy-files --out-dir lib src",
+    "install": "node -e \"require('./lib/install-hooks').default()\""
+  },
+  "dependencies": {
+    "find-up": "^1.1.0",
+    "manage-path": "^2.0.0",
+    "spawn-command": "0.0.2-1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "eslint-config-kln": "^0.1.5",
+    "babel-preset-kln-node": "^0.1.1",
+    "rimraf": "^2.5.1"
+  },
+  "eslintConfig": {
+    "extends": "kln"
+  },
+  "babel": {
+    "presets": [
+      "kln-node"
+    ]
+  }
+}
